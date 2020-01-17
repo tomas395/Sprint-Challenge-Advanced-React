@@ -38,19 +38,4 @@ class App extends React.Component {
   }
 }
 
-//   render() {
-//     return (
-//       <div className="App">
-//         {this.props.data.map(player => (
-//         <div>
-//           <DashBoard />
-//         </div>
-//         <PlayerCard name={player.name} country={player.country}
-//         />
-//         ))}
-//       </div>
-//     );
-//   }
-// }
-
 export default App;

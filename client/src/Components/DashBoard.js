@@ -13,6 +13,7 @@ const DashBoard = () => {
       <div className="dark-mode__toggle">
         <div
           onClick={toggleMode}
+          data-testid="darkmodeswitcher"
           className={darkMode ? "toggle toggled" : "toggle"}
         />
       </div>

@@ -1,9 +1,9 @@
 import React from "react";
-import { render } from "@testing-library/react";
 import App from "./App";
+import { render } from "@testing-library/react";
 
-test("renders google link", () => {
-  const { getByText } = render(<App />);
-  const linkElement = getByText(/google/i);
-  expect(linkElement).toBeInTheDocument();
+test("tests if there is a darkmode class", () => {
+  const { getByTestId } = render(<App />);
+  const whateverElement = getByTestId("darkmodeswitcher");
+  expect(whateverElement).toBeTruthy();
 });
