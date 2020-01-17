@@ -1,26 +1,56 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
+import "./App.css";
+import axios from "axios";
+import DashBoard from "./Components/DashBoard";
+import PlayerCard from "./Components/PlayerCard";
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+class App extends React.Component {
+  state = {
+    data: []
+  };
+
+  componentDidMount() {
+    console.log("This Mounted!");
+    axios.get("http://localhost:5000/api/players").then(res => {
+      console.log("Fetched!", res);
+      this.setState({
+        data: res.data
+      });
+    });
+  }
+
+  render() {
+    console.log(this.state.data);
+    return (
+      <div className="App">
+        <DashBoard />
+        {this.state.data.map(player => (
+          <div>
+            <PlayerCard
+              name={player.name}
+              country={player.country}
+              key={player.id}
+            />
+          </div>
+        ))}
+      </div>
+    );
+  }
 }
+
+//   render() {
+//     return (
+//       <div className="App">
+//         {this.props.data.map(player => (
+//         <div>
+//           <DashBoard />
+//         </div>
+//         <PlayerCard name={player.name} country={player.country}
+//         />
+//         ))}
+//       </div>
+//     );
+//   }
+// }
 
 export default App;
